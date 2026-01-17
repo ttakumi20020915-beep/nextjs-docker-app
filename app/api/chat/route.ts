@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         statusText: response.statusText,
         errorData,
       });
-      throw new Error(Dify API request failed: ${response.status} ${response.statusText});
+      throw new Error('Dify API request failed: ${response.status} ${response.statusText}');
     }
 
     const data = await response.json();
