@@ -25,14 +25,11 @@ export async function POST(request: Request) {
       }),
     });
 
+    const text = await response.text();
+    
     if (!response.ok) {
-      const errorData = await response.json().catch(() => null);
-      console.error('Dify API Error:', {
-        status: response.status,
-        statusText: response.statusText,
-        errorData,
-      });
-      throw new Error('Dify API request failed: ${response.status} ${response.statusText}');
+      console.error('Dify API Error:', response.status, text);
+      throw new Error('Dify Error: ${response.status}');
     }
 
     const data = await response.json();
