@@ -4,14 +4,14 @@ export async function POST(request: Request) {
   try {
     const { message } = await request.json();
 
-    if (!process.env.NEXT_PUBLIC_DIFY_API_KEY) {
+    if (!process.env.DIFY_API_KEY) {
       throw new Error('DIFY_API_KEY is not set in environment variables');
     }
 
     const response = await fetch('https://api.dify.ai/v1/chat-messages', {
       method: 'POST',
       headers: {
-        'Authorization': Bearer app-XE264XfzGMOgYW4IBWvS0IvP,
+        'Authorization': `Bearer app-XE264XfzGMOgYW4IBWvS0IvP`,
         // 変数に置き換える
         'Content-Type': 'application/json',
       },
